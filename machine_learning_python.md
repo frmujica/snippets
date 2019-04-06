@@ -33,6 +33,7 @@ regk = KNeighborsRegressor(n_neighbors=2)
 # Fit the data
 regk.fit(X,y)
 ```
+
 ### Decision Tree
 Max_depth: Number of Splits
 Min_samples_leaf: Minimum number of observations per leaf
