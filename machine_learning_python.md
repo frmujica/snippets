@@ -33,7 +33,6 @@ regk = KNeighborsRegressor(n_neighbors=2)
 # Fit the data
 regk.fit(X,y)
 ```
-
 ### Decision Tree
 Max_depth: Number of Splits
 Min_samples_leaf: Minimum number of observations per leaf
@@ -57,7 +56,6 @@ clf=LogisticRegression()
 clf.fit(X,y)
 ```
 ### k nearest neighbor
-parameters: n_neighbors
 ```python
 # Load the library
 from sklearn.neighbors import KNeighborsClassifier
