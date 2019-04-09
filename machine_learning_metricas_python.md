@@ -240,5 +240,25 @@ plt.plot(fp,tp)
 # Vemos el dato devuelto por la metrica
 auc(fp,tp)
 
+```
+
+
+## Precision & Recall
+
+Vemos los hay debajo de la curva de la grafica
+
+```PYTHON
+
+# Imporatamos libreria para crear alas metricas
+from sklearn.metrics import precision_score, recall_score
+from sklearn.metrics import confusion_matrix, classification_report
+
+precision_score(y_test,clf.predict(X_test))
+
+classification_report(y_test,clf.predict(X_test))
+
+# Cross Validation
+cross_val_score(clf,X,y,scoring="precision")
+cross_val_score(clf,X,y,scoring="recall")
 
 ```
