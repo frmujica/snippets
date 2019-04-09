@@ -46,6 +46,29 @@ reg.best_estimator_
 
 ```
 
+## RamdomFores
+
+Parametros
+<li>n_estimator :: numero de arboles</li>
+<li>max_depth   :: profunciondad</li>
+<li>min_samples :: numero de testeos</li>
+<li>obs=-1      ::  Procesadores a utilizar</li>
+
+```python
+
+# Importamos la libreria
+from sklearn.ensemble import RandomForestClassifier
+
+# Creamos el modelo
+clf = RandomForestClassifier(max_depth=3, min_samples_leaf=20, n_estimators=100, n_jobs=-1)
+
+# pasamos la metrica CrossValidaton
+cross_val_score(clf, X,y).mean()
+
+# Entrenamiento
+clf.fit(X,y)
+```
+
 
 ## ===========
 ## Regression
