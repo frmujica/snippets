@@ -18,7 +18,7 @@
 ```
 
 
-## GridSearch
+## GridSearchCV
 
 ```python
 
