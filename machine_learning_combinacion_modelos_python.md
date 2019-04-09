@@ -29,9 +29,20 @@ clf=BaggingClassifier(base_estimator=KNeighborsClassifier(n_neighbors=4),n_estim
 # Entrenamos el modelo
 clf.fit(X,y)
 
-# Le paamos una metrica accuracy
+# Le pasamos una metrica accuracy
 cross_val_score(clf,X,y,scoring="accuracy").mean()
 
+
+# Ejemplo con Randomfores
+
+# Load the library
+from sklearn.ensemble import RandomForestClassifier
+
+# Create an instance
+clf = RandomForestClassifier(max_depth=4)
+
+# Fit the data
+clf.fit(X,y)
 
 ```
 
@@ -41,13 +52,18 @@ cross_val_score(clf,X,y,scoring="accuracy").mean()
 ```python
 
 # Cargamos la libreria
-from xgboost import XGBRegressor
-
-from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.ensemble import GradientBoostingClassifier
 
 # Creamos el combinador de modelos
 
+clf = GradientBoostingClassifier(max_depth=4)
+
+# ó segun queremos usar clasificador o reresor 
 reg = GradientBoostingRegressor(max_depth=4, n_estimators=100,learning_rate=0.1)
+
+# entrenamoento de los datos
+clf.fit(X,y)
+
 
 # Aplicamos metrica con Cross Vlidation 
 from sklearn.model_selection import cross_val_score
