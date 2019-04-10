@@ -131,6 +131,11 @@ df[ df["SaleCondition"] == 'Normal']["SalePrice"].mean()
 # Sustituir cada variable por un vector con la libreria word2vec
 # Esta opcion nos da la posibilidad de buscar vecionos 
 
+# Opcion 4
+
+# Tenemos la funcion dumies ue nos actualiza las variables categoricas por numeros, duplicando las coumnas
+dfb = pd.get_dummies(df)
+
 ```
 
 ## Pipelines
@@ -146,5 +151,47 @@ pipe = Pipeline(steps=[("scaled",RobustScaler()),
                        ("rf",RandomForestRegressor(max_depth=4))
                        ]
                )
+
+```
+
+## Eliminacion de OUTLIERS
+
+```python
+
+# Podemos pintar los datos para ver si hay outlier
+plt.scatter(df["GrLivArea"],df["SalePrice"])
+plt.hist(df["SalePrice"])
+
+# y eliminar aquellos que consideremos oitluers
+df = df[df["GrLivArea"]<4000]
+
+```
+
+
+## Transformacion de los datos de salida
+
+```python
+
+# Debemos de cambiar la escala de los datos para que sean representados
+df["SalePrice"]=np.log1p(df["SalePrice"])
+
+# Importamos la libreria
+from sklearn.preprocessing import RobustScaler
+
+# instanciamos la libreria
+rbs = RobustScaler()
+
+# Creamos la DataFrame que usaremos para realizar la prediccion
+X = df[[ 'MSSubClass', 'LotArea', 'OverallQual', 'OverallCond',
+       'YearBuilt', 'YearRemodAdd', 'BsmtFinSF1', 'BsmtFinSF2', 'BsmtUnfSF',
+       'TotalBsmtSF', '1stFlrSF', '2ndFlrSF', 'LowQualFinSF', 'GrLivArea',
+       'BsmtFullBath', 'BsmtHalfBath', 'FullBath', 'HalfBath', 'BedroomAbvGr',
+       'KitchenAbvGr', 'TotRmsAbvGrd', 'Fireplaces', 'GarageCars',
+       'GarageArea', 'WoodDeckSF', 'OpenPorchSF', 'EnclosedPorch', '3SsnPorch',
+       'ScreenPorch', 'PoolArea', 'MiscVal', 'MoSold', 'YrSold']]
+
+# Realizaremos la transformacion
+X_scale = rbs.fit_transform(X)
+
 
 ```
