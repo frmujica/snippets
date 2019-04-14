@@ -2,6 +2,13 @@
 
 ```
  Machin Learning - Aprendizaje supermivsado 
+ 
+ Tecnica para deducir una funcion a partir de los elelentos entrenados
+ 
+ - El resultado puede ser un valor numerico concreto (REGRESION) (lm)
+ - O puede devolver una etiqueta (CLASIFICACION) (glm)
+ 
+ La finalidad es creara un a funcion capaz de predecir un valor desde ejemplo dadods.
   
  Requiere tener datos de entrenamientos etiquetados
 
@@ -16,6 +23,19 @@
  
  Metricas      ::  Para evaluar lo bueno que es el modelo
 ```
+
+```python
+
+# Ejmplo de clasificacion
+
+Ej = glm(data= My_Dataframe,
+         family = "binomial",
+         formula = var_a predecir~variable_predictora_1,variable_predictora_2...variable_predictora_N,
+         wheight = var1, var2...)
+         
+
+```
+
 
 
 ## GridSearchCV
