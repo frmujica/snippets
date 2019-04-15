@@ -1,6 +1,6 @@
 # Regresion lineal
 
-  Modelo utilizado para explicar la relacion entre uina variable DEPENDIENTE Y y una serie de variables INDEPENTES X
+  Modelo utilizado para explicar la relacion entre una variable DEPENDIENTE Y y una serie de variables INDEPENTES X
 
 ```python
 
@@ -8,17 +8,17 @@ lm(data, varaiblea_a_predecir~varaible predictora)
 
 Ejemplo
 
-lm(data=data_frame, variable_a_predecir~Variable_predictora1, Variable_predictora2...Variable_predictora1N)
+lm(data=data_frame, variable_a_predecir~Variable_predictora_1, Variable_predictora_2...Variable_predictora_N)
 
 ```
 
 
 # Regresion logistica
 
-Usada pra clasificar.
+Usada para clasificar.
 
-Usara para predecir el resultado de una varaible categorica, es decir una varaible que tiene un numero limitado de valores posibles,
-en funcion de las varaibles las varaibles independientes o predictoras
+Usada para predecir el resultado de una varaible categorica, es decir una varaible que tiene un numero limitado de valores posibles,
+en funcion de las varaibles independientes o predictoras
 
 En Python se define como funcion "sigmoind"
 
