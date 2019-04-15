@@ -77,7 +77,7 @@ def derivada_theta(X,y):
   d   Nan   Nan    |        X -> 3.95
   e   9.0   11,1   /        y -> 4,78
  
- ''''
+ ```
   
   
   # Mediana
