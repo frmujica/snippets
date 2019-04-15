@@ -90,7 +90,15 @@ reg.fit(X,y)
 reg.predict([[2540],[3500],[4000]])
 ```
 
-### k nearest neighbor (Regression)
+### knn nearest neighbor (Regression)
+
+Este modelo lo podemos usar tanto pra regresion como para clasificacion
+
+Debemos indicar los puntos de corte o de decision en el caso de usarar para clasificacion
+
+Busca distancias entre elemnos, y debemos indicar hasta cuantos vecinos puede buscar.
+
+Se basa en los angulos o cosenos de los datos para buscar los vecinos mas cercanos.
 
 <li>n_neighbors   :: numero de vecinos a buscar mas cercanos</li>
 
@@ -104,6 +112,20 @@ regk = KNeighborsRegressor(n_neighbors=2)
 
 # Fit the data
 regk.fit(X,y)
+
+```
+
+```R
+
+# K : Cuantos vecinos ebemos de buscar,
+
+Knn(DataFrame_Training,
+   Data_Frame_Test,
+   cl,
+   k=5,
+   prob=T
+   )
+
 
 ```
 
