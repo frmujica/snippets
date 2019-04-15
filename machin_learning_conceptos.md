@@ -1,3 +1,53 @@
+# Machin Learning
+
+### Aprendizaje supervisado
+
+Regresion (metodos)                   Clasificacion (metodos)
+
+- Regresion lineal                    - Regresion Logistica
+- Knn (vecinos)                       - Arboles
+- Arboles                             - Random-Forest
+- Random-Forest                       - Knn (vecionos)
+- Redes neuronales                    - Navie Bayes
+                                      - Redes Neuronales
+
+### Aprendizaje NO supervisado (metodos)
+
+- Redes Neuronales
+- Knn (vecionos)
+- Clusterizacion
+
+### Pasos de estudio de una problema con Machin Learning
+
+1) Definicion del problema
+2) Objetivos del Machn Learning
+3) Recoleccion de los datos
+4) Limpieza de datos
+5) Entrenamineto y validacion del/los modelos
+6) Testeo
+7) Publicacion
+
+
+Datos de training : Son los datos con los que un modelo aprende
+Datos de testeo : Son los datos con los que entreno el modelo
+Datos e validacion : Son los datos con los que valido el modelo
+
+
+###Definicion de metricas
+
+- Accurency : Predicciones positivas en base al total de predicciones
+
+  (Falsos_positivos + Verdaderos_Positivos) / (Verdaderos_positivos + Verdaderos_positivos + Falsos_Negativos + Falsos+positivos)
+
+- Precision : Proporcion de predicciones positivas
+
+  Verdaderos_positivos / (verdaderos_positivos + Falsos_Positivos)
+
+- Recall : Total de aciertos
+
+  Verdaderos_positivos / (Verdaderos_positivos + Falsos_Negativos)
+  
+
 # Regresion lineal
 
   Modelo utilizado para explicar la relacion entre una variable DEPENDIENTE Y y una serie de variables INDEPENTES X
