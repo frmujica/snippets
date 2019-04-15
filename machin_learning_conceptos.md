@@ -55,7 +55,7 @@ glm(data=data_frame,
 
 Usada para optimizar.
 
-Es la elecccion del menos elemento en un conjubnto de elementos dados
+Es la elecccion del menor elemento en un conjunto de elementos
 
 ```Python
 
@@ -67,7 +67,7 @@ def derivada_theta(X,y):
 
 # Desviacion Estandard
 
-  Es la media de dispersion mas comun, que nos indica como de dispersos estan los datos copn despècto a la media
+  Es la media de dispersion mas comun, que nos indica como de dispersos estan los datos copn respecto a la media
   
   ```
       X     y     \
@@ -82,15 +82,19 @@ def derivada_theta(X,y):
   
   # Mediana
   
-    Son los dalores dentrale de nuestro vator de datos.
+    Son los valores centrales de nuestro vator de datos.
   
+  ```
   1,3,7,9,14,20,22 = 9
   
   1,3,7,9,14,20 = 7 y 9 = (7+9)/2 = 3
-  
+  ```
   
   # Media
   
-    Nos indica ka tendencia de nuestros valores centrales
+    Nos indica la tendencia de nuestros valores centrales
    
+   ```
     X+X2+X3...Xn / tolla_numeros
+    ```
+   
