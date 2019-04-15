@@ -245,8 +245,50 @@ regk = KNeighborsClassifier(n_neighbors=2)
 regk.fit(X,y)
 ```
 
+### Navie Bayes
+
+Modelo de clasificacion de la librería "e1071"
+
+```R
+
+# Importacion de la libreria
+library (e1071)
+
+# Creacion del modelo
+nb = navieBayes(var_a_predecir~var_predictora_1+var_predictora_2...var_predictora_N, data=DataFrame)
+
+# informacion del modelo
+Summary(nb)
+
+# Prediccion 
+predict(nb, newdata=New_Data_Frame)
+
+# Visualizacion de los datos en un grafico
+hist( predict( modelo, newdata=New_Data_Frame, type="responsive", brear=10)
+
+```
+
+En este caso, el problema es que este tipo de modelos no permite que las verriables predictoras interactuen entre si.
+Por lo que se suele usar un modelo de "arboles"
+
 
 ### Decision Tree (Classification)
+
+Este modelo permite la interactuacion entrre las varaibles predictoras.
+
+Es fácil de usar
+
+PEro es demasiado flexible
+
+Metodo muy fiable 
+
+Podemos indicar el punto de corte o decisorio, y que se suele indicar con con puntos que mas separen los datos.
+
+Entran conceptos como:
+
+Nodo        :: Punto de decision
+Hoja        :: Lo que cuelga del nogo
+Profundidad :: Numero de decisiones
 
 Parametros:
 <li>Max_depth         :: Numero de diviones</li>
@@ -278,7 +320,7 @@ clft = GridSearchCV(DecisionTreeClassifier(),
                     scoring="precision"
                   )
 
-# Crgamos el modelo
+# Cargamos el modelo
 clft.fit(X,y)
 
 # Nos devulve la instruccion con cunmplimnetada con los parametros con mejor resultado
@@ -290,6 +332,23 @@ clft.best_params_
 # mejor resultado
 clft.best_score_
 
+```
+
+Ejemplo en R
+
+```R
+
+# importamos la libreria
+library (tree)
+
+# Creamos el modelo
+modelo = tree(variable_a_predecir~Variable_predictora_1+Variable_predictora_2...Variable_predictora_N, Data_Frame)
+
+# prediccion con los datos nuevos
+predict(modelo, newdata=New_Data_Frame)
+
+# Dibujamos en pantallas
+plot(modelo, Y=Null, type=C("____", "_____"))
 ```
 
 
