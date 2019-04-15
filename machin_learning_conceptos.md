@@ -2,20 +2,56 @@
 
 ### Aprendizaje supervisado
 
-Regresion (metodos)                   Clasificacion (metodos)
+<table>
 
-- Regresion lineal                    - Regresion Logistica
-- Knn (vecinos)                       - Arboles
-- Arboles                             - Random-Forest
-- Random-Forest                       - Knn (vecionos)
-- Redes neuronales                    - Navie Bayes
-                                      - Redes Neuronales
+  <tr>
+    <td>Regresion (metodos)</td>
+    <td>Clasificacion (metodos)</td>
+  </tr>
+  
+  <tr>
+  <td>egresion lineal</td>
+  <td>Regresion Logistica</td>
+  </tr>
+  
+  <tr>
+  <td>Knn (vecinos)</td>
+  <td>Knn (vecinos)</td>
+  </tr>
+  
+  <tr>
+  <td>Arboles</td>
+  <td>Arboles</td>
+  </tr>
+  
+  
+  <tr>
+  <td>Random-Forest</td>
+  <td>Random-Forest</td>
+  </tr>
+  
+  <tr>
+  <td>Redes Neuronales</td>
+  <td>Redes Neuronales</td>
+  </tr>
+  
+  <tr>
+  <td></td>
+  <td>Navie Bayes</td>
+  </tr>
+  
+</table>
+
 
 ### Aprendizaje NO supervisado (metodos)
 
-- Redes Neuronales
-- Knn (vecionos)
-- Clusterizacion
+<table>
+  <tr><td>Redes Neuronales</td></tr>
+  <tr><td>Knn (vecionos)</td></tr>
+  <tr><td>Clusterizacion</td></tr>
+</table>
+
+  
 
 ### Pasos de estudio de una problema con Machin Learning
 
