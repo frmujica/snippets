@@ -66,28 +66,7 @@ reg.best_estimator_
 
 ```
 
-## RamdomFores
 
-Parametros
-<li>n_estimator :: numero de arboles</li>
-<li>max_depth   :: profunciondad</li>
-<li>min_samples :: numero de testeos</li>
-<li>obs=-1      ::  Procesadores a utilizar</li>
-
-```python
-
-# Importamos la libreria
-from sklearn.ensemble import RandomForestClassifier
-
-# Creamos el modelo
-clf = RandomForestClassifier(max_depth=3, min_samples_leaf=20, n_estimators=100, n_jobs=-1)
-
-# pasamos la metrica CrossValidaton
-cross_val_score(clf, X,y).mean()
-
-# Entrenamiento
-clf.fit(X,y)
-```
 
 
 ## ===========
@@ -342,6 +321,8 @@ Ejemplo en R
 library (tree)
 
 # Creamos el modelo
+# Con el signo "+" añadimos la variable predictora
+# Con el signo "*" ademas indicamos que las varaibles interactuan entre ellas.
 modelo = tree(variable_a_predecir~Variable_predictora_1+Variable_predictora_2...Variable_predictora_N, Data_Frame)
 
 # prediccion con los datos nuevos
@@ -351,6 +332,37 @@ predict(modelo, newdata=New_Data_Frame)
 plot(modelo, Y=Null, type=C("____", "_____"))
 ```
 
+
+## RamdomFores (Classification)
+
+Este modelo generar muchos arboles de decision independientes construidos a partir de datos ligeramente distintos
+
+Estemodelo no admite valores NAN
+
+Parametros
+<li>n_estimator :: numero de arboles</li>
+<li>max_depth   :: profunciondad</li>
+<li>min_samples :: numero de testeos</li>
+<li>obs=-1      ::  Procesadores a utilizar</li>
+
+```python
+
+# Importamos la libreria
+from sklearn.ensemble import RandomForestClassifier
+
+# Creamos el modelo
+clf = RandomForestClassifier(max_depth=3, min_samples_leaf=20, n_estimators=100, n_jobs=-1)
+
+# pasamos la metrica CrossValidaton
+cross_val_score(clf, X,y).mean()
+
+# Entrenamiento
+clf.fit(X,y)
+```
+
+```R
+randomFirest(variable_a_predecir~variable_predictora_1+variable_predictora_2...variable_predictora_N, DataFrame)
+```
 
 
 ### Support Vercor (SVC) (Classification)
