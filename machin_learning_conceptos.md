@@ -95,6 +95,6 @@ def derivada_theta(X,y):
     Nos indica la tendencia de nuestros valores centrales
    
    ```
-    X+X2+X3...Xn / tolla_numeros
+    X+X2+X3...Xn / tolla_numeros 
     ```
    
