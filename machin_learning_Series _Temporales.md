@@ -130,5 +130,111 @@ pyplot.show()
 
 <div align="center"><img src="imagenes/machin_learning_Series _Temporales_Plot2.png"/></div>
 
-En este grafico podemos ver que hay correlacion en
+En este grafico podemos ver que hay correlacion positiva en los datos del 10 al 12, por lo que <b>5</b> nos puede valer de punto de partida en el paramretro <br>AR</b> del modelo.
+
+
+## Creacion del modelo ARIMA
+
+```python
+
+# Importamos las lisbrerias basicas
+from pandas import read_csv
+from pandas import datetime
+from pandas import DataFrame
+from matplotlib import pyplot
+
+# Importamos la ibrerias para genarar el modelo ARIMA
+from statsmodels.tsa.arima_model import ARIMA
+
+# Funcion de chequeo de fecha durante la importacion del fichero
+def parser(x):
+	return datetime.strptime('190'+x, '%Y-%m')
+
+# Leemos el fichero de entrada
+series = read_csv('shampoo-sales.csv', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
+
+# fit model
+# p : 5
+# d : 1
+# q : 0
+# Creamos el modelo al que le indicamos la serie y los paramtros en base a los que debe de entrenar
+model = ARIMA(series, order=(5,1,0))
+
+# Entrenamos el modelo
+model_fit = model.fit(disp=0)
+
+# Visualizamos el resultado del modelo
+print(model_fit.summary())
+
+# Creamos un grafico con los errores residuales
+residuals = DataFrame(model_fit.resid)
+residuals.plot()
+pyplot.show()
+
+# Creamos aun grafico con la densidad de los valores de los errores
+residuals.plot(kind='kde')
+pyplot.show()
+
+# Vemos la media, std, min, ...
+print(residuals.describe())
+
+# Vemos un resumen de los valores [ print(model_fit.summary()) ]
+# 
+#                              ARIMA Model Results
+# ==============================================================================
+# Dep. Variable:                D.Sales   No. Observations:                   35
+# Model:                 ARIMA(5, 1, 0)   Log Likelihood                -196.170
+# Method:                       css-mle   S.D. of innovations             64.241
+# Date:                Mon, 12 Dec 2016   AIC                            406.340
+# Time:                        11:09:13   BIC                            417.227
+# Sample:                    02-01-1901   HQIC                           410.098
+#                          - 12-01-1903
+# =================================================================================
+#                     coef    std err          z      P>|z|      [95.0% Conf. Int.]
+# ---------------------------------------------------------------------------------
+# const            12.0649      3.652      3.304      0.003         4.908    19.222
+# ar.L1.D.Sales    -1.1082      0.183     -6.063      0.000        -1.466    -0.750
+# ar.L2.D.Sales    -0.6203      0.282     -2.203      0.036        -1.172    -0.068
+# ar.L3.D.Sales    -0.3606      0.295     -1.222      0.231        -0.939     0.218
+# ar.L4.D.Sales    -0.1252      0.280     -0.447      0.658        -0.674     0.424
+# ar.L5.D.Sales     0.1289      0.191      0.673      0.506        -0.246     0.504
+#                                     Roots
+# =============================================================================
+#                  Real           Imaginary           Modulus         Frequency
+# -----------------------------------------------------------------------------
+# AR.1           -1.0617           -0.5064j            1.1763           -0.4292
+# AR.2           -1.0617           +0.5064j            1.1763            0.4292
+# AR.3            0.0816           -1.3804j            1.3828           -0.2406
+# AR.4            0.0816           +1.3804j            1.3828            0.2406
+# AR.5            2.9315           -0.0000j            2.9315           -0.0000
+# -----------------------------------------------------------------------------
+
+```
+
+Vemos la grafica de los errores residuales, lo que nos indica que unapuede haber 
+tendencias que no hayan sido capturadas por el modelo [ residuals = DataFrame(model_fit.resid) ]
+
+<div align="center"><img src="imagenes/machin_learning_Series _Temporales_Plot3.png"/></div>
+
+
+Vemos la desidad grafica de los errores residuales [ residuals.plot(kind='kde') ]
+
+<div align="center"><img src="imagenes/machin_learning_Series _Temporales_Plot4.png"/></div>
+
+En el resumen podemos ver un sesgo en la prediccion , una emedia NO cero en los residuos
+
+```python
+# count   35.000000
+# mean    -5.495213
+# std     68.132882
+# min   -133.296597
+# 25%    -42.477935
+# 50%     -7.186584
+# 75%     24.748357
+# max    133.237980
+```
+
+## Cear pronosticos con ARIMA
+
+
 
