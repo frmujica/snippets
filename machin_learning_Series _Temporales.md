@@ -245,6 +245,9 @@ Vamos a dividor los datos en entrenamineto y test
 podemos evitar todas estas especificaciones utilizando la función <b>forecast()</b>, que realiza un 
 pronóstico de un solo paso utilizando el modelo.
 
+La funcion forecast, es una función genérica para pronosticar a partir de series de tiempo o modelos de series de tiempo
+
+
 ```python
 
 # Importamos las librerias basicas
@@ -258,7 +261,7 @@ from statsmodels.tsa.arima_model import ARIMA
 # importamos la libreria para usar el modelo forecast
 from sklearn.metrics import mean_squared_error
 
-# duncion de parseo de fechas para el fichero de entrada
+# funcion de parseo de fechas para el fichero de entrada
 def parser(x):
 	return datetime.strptime('190'+x, '%Y-%m')
 
@@ -286,13 +289,13 @@ for t in range(len(test)):
 	# Entrenamos el modelo
 	model_fit = model.fit(disp=0)
 
-	#Pasamos el modelo con el metodo forecast()
+	# Pasamos el modelo con el metodo forecast()
 	output = model_fit.forecast()
 	
 	# Almaceno la prediccion de salida
 	yhat = output[0]
 	
-	#Y almaceno la prediccion en la lista de predicciones
+	# Y almaceno la prediccion en la lista de predicciones
 	predictions.append(yhat)
 	
 	# ME queda con la observacion actual
@@ -301,7 +304,7 @@ for t in range(len(test)):
 	# Y almaceno/añado la observacion a la lista de valores con los que entreno el modelo
 	history.append(obs)
 	
-	#Visualozo la prediccion y la ultima observacion
+	# Visualozo la prediccion y la ultima observacion
 	print('predicted=%f, expected=%f' % (yhat, obs))
 
 # Guardo la medio de los erroroes
