@@ -342,3 +342,39 @@ proporcionanado de este modo una comparacion con otras configuraciones de ARIMA
 ```
 
 <div align="center"><img src="imagenes/machin_learning_Series _Temporales_Plot5.png"/></div>
+
+
+```python
+
+# A la hora de creara el modelo
+model = ARIMA(history, order=(5,1,0))
+
+# Podemos indicar aue calcule automaticamente los mejores valores
+model = ARIMA(history, lambda = "auto")
+
+
+```
+
+
+## Ejemplo con codigo R
+
+```R
+
+eeadj <- seasadj(stl(elecequip, s.window="periodic"))
+autoplot(eeadj) + xlab("Year") +
+  ylab("Seasonally adjusted new orders index")
+
+ggtsdisplay(diff(eeadj))
+
+(fit <- Arima(eeadj, order=c(3,1,1)))
+
+# otra opcion de arima es decirle que cualule el lambda autometicmanete
+fit <- auto.arima(elecequip, lambda = "auto")
+
+# chqueo de residuos
+checkresiduals(fit)
+
+# emviamos el resultado a un modelo forecast
+fit %>% forecast %>% autoplot
+
+```
