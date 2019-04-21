@@ -234,7 +234,111 @@ En el resumen podemos ver un sesgo en la prediccion , una emedia NO cero en los 
 # max    133.237980
 ```
 
-## Cear pronosticos con ARIMA
+## Crear pronosticos con ARIMA
 
+Con ARMIA podemos generar pronosticos.
 
+Para ello usaremos la fucnion <b>predict()</b> desde el objeto ARIMAResilts.
 
+Vamos a dividor los datos en entrenamineto y test
+
+podemos evitar todas estas especificaciones utilizando la función <b>forecast()</b>, que realiza un 
+pronóstico de un solo paso utilizando el modelo.
+
+```python
+
+# Importamos las librerias basicas
+from pandas import read_csv
+from pandas import datetime
+from matplotlib import pyplot
+
+# Importamos la libreria para crear ael modelo ARMINA
+from statsmodels.tsa.arima_model import ARIMA
+
+# importamos la libreria para usar el modelo forecast
+from sklearn.metrics import mean_squared_error
+
+# duncion de parseo de fechas para el fichero de entrada
+def parser(x):
+	return datetime.strptime('190'+x, '%Y-%m')
+
+#Leemos el fichero de entrada
+series = read_csv('shampoo-sales.csv', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
+
+# Dividimos los datos en entrenamiento y test
+X = series.values
+size = int(len(X) * 0.66)
+train, test = X[0:size], X[size:len(X)]
+
+# Creaos una serie con los valores del entrenamoento
+history = [x for x in train]
+
+# Creamos una lista vacia para las almacenar las predicciones
+predictions = list()
+
+# recorremos los datos de TEST
+for t in range(len(test)):
+
+	# Creamos el modelo ARIMA
+	#Con los valores de history, que guarda lo valores del entrenamiento
+	model = ARIMA(history, order=(5,1,0))
+	
+	# Entrenamos el modelo
+	model_fit = model.fit(disp=0)
+
+	#Pasamos el modelo con el metodo forecast()
+	output = model_fit.forecast()
+	
+	# Almaceno la prediccion de salida
+	yhat = output[0]
+	
+	#Y almaceno la prediccion en la lista de predicciones
+	predictions.append(yhat)
+	
+	# ME queda con la observacion actual
+	obs = test[t]
+	
+	# Y almaceno/añado la observacion a la lista de valores con los que entreno el modelo
+	history.append(obs)
+	
+	#Visualozo la prediccion y la ultima observacion
+	print('predicted=%f, expected=%f' % (yhat, obs))
+
+# Guardo la medio de los erroroes
+error = mean_squared_error(test, predictions)
+
+# Visualizo la media de los errores
+print('Test MSE: %.3f' % error)
+
+# Creo un grafico con los valores del TEST
+pyplot.plot(test)
+
+# Añado al grafico otra lina cn los valores e la prediccion
+pyplot.plot(predictions, color='red')
+
+# Muestro graficos en pantalla
+pyplot.show()
+
+```
+
+Podemos tambine calcular el porcentaje el error cuadratico final (MSE) para las predicciones,
+proporcionanado de este modo una comparacion con otras configuraciones de ARIMA
+
+```python
+# predicted=349.117688, expected=342.300000
+# predicted=306.512968, expected=339.700000
+# predicted=387.376422, expected=440.400000
+# predicted=348.154111, expected=315.900000
+# predicted=386.308808, expected=439.300000
+# predicted=356.081996, expected=401.300000
+# predicted=446.379501, expected=437.400000
+# predicted=394.737286, expected=575.500000
+# predicted=434.915566, expected=407.600000
+# predicted=507.923407, expected=682.000000
+# predicted=435.483082, expected=475.300000
+# predicted=652.743772, expected=581.300000
+# predicted=546.343485, expected=646.900000
+# Test MSE: 6958.325
+```
+
+<div align="center"><img src="imagenes/machin_learning_Series _Temporales_Plot5.png"/></div>
