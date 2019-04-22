@@ -230,6 +230,11 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, auc, 
 
 ```
 
+https://pythonspot.com/category/nltk/
+
+https://likegeeks.com/es/tutorial-de-nlp-con-python-nltk/
+
+
 
 
 
