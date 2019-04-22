@@ -127,6 +127,10 @@ Para ello usaremos herraminetas:
     <b>Precission-Recall curve</b> : Mezcla de Precission y Recall
 
 
+https://likegeeks.com/es/tutorial-de-nlp-con-python-nltk/
+
+
+
 ```python
 
 # Carga de datos
