@@ -146,7 +146,7 @@ def load_sst_data(path,
             if example['label'] is None:
                 continue
             
-            # Strip out the parse information and the phrase labels---we don't need those here
+            # Strip out the parse information and the phrase labels  we don't need those here
             text = re.sub(r'\s*(\(\d)|(\))\s*', '', line)
             example['text'] = text[1:]
             data.append(example)
@@ -177,7 +177,7 @@ training_set[training_set.label == 0].head(10)
     label       text
 22  0           This is n't a new idea .
 34  0           ... a sour little movie at its core ; an explo...
-37  0           Made me unintentionally famous -- as the queas...
+37  0           Made me unintentionally famous    as the queas...
 52  0           The modern-day royals have nothing on these gu...
 53  0           It 's only in fairy tales that princesses that...
 59  0           An absurdist spider web .
