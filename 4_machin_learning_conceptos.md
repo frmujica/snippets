@@ -1,16 +1,21 @@
 # Machin Learning
 
-### Aprendizaje supervisado
+## Aprendizaje supervisado
+
+Proceso encargado de encontrar la relacion exitente entre unas variables de entrada y una variable de salida
+Es decir, decirle al algoritmo que respuesta deseamos frente a ciertos de datos d entrada, tras mostrarle muchos ejemplos.
+Hasta el punto que el algotimo puede dar un resultado correcto en funcion de unos datos de entrada sin haberlos visto anteriormente.
+
 
 <table>
 
   <tr>
-    <td>Regresion (metodos)</td>
-    <td>Clasificacion (metodos)</td>
+    <td><b>Regresion (metodos)</b></td>
+    <td><b>Clasificacion (metodos)</b></td>
   </tr>
   
   <tr>
-  <td>egresion lineal</td>
+  <td>Regresion lineal</td>
   <td>Regresion Logistica</td>
   </tr>
   
@@ -43,7 +48,10 @@
 </table>
 
 
-### Aprendizaje NO supervisado (metodos)
+## Aprendizaje NO supervisado (metodos)
+
+Es el proceso que produce conocimineto desde los datos de entrada sin indicar el resultado que queremos obtener.
+Lo que estamos buscando son comportamineto o patrones similares para generar conocimineto.
 
 <table>
   <tr><td>Redes Neuronales</td></tr>
@@ -53,7 +61,7 @@
 
   
 
-### Pasos de estudio de una problema con Machin Learning
+## Pasos de estudio de una problema con Machin Learning
 
 1) Definicion del problema
 2) Objetivos del Machn Learning
@@ -69,17 +77,17 @@ Datos de testeo : Son los datos con los que entreno el modelo
 Datos e validacion : Son los datos con los que valido el modelo
 
 
-###Definicion de metricas
+## Definicion de metricas
 
-- Accurency : Predicciones positivas en base al total de predicciones
+- <b>Accurency</b> : Predicciones positivas en base al total de predicciones
 
   (Falsos_positivos + Verdaderos_Positivos) / (Verdaderos_positivos + Verdaderos_positivos + Falsos_Negativos + Falsos+positivos)
 
-- Precision : Proporcion de predicciones positivas
+- <b>Precision</b> : Proporcion de predicciones positivas
 
   Verdaderos_positivos / (verdaderos_positivos + Falsos_Positivos)
 
-- Recall : Total de aciertos
+- <b>Recall</b> : Total de aciertos
 
   Verdaderos_positivos / (Verdaderos_positivos + Falsos_Negativos)
   
