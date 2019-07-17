@@ -3,7 +3,7 @@
 ## Modelo
 
   Es la construccion conceptual mas simplificada de una realizadad más compleja
-    Para poder comprender mejor la realizada.
+para poder comprender mejor la realizada.
   
   Por ejemplo un mapa, que nos ayuda a enteden nuestro entorno.
 
@@ -27,7 +27,7 @@ Gracias a esto aparcen los conceptos de :
     Aprender
 
 
-Y en estos conceptos se basa el Machin LEarning.
+Y en estos conceptos se basa el Machin Learning.
 
 ## Los datos
 
