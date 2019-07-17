@@ -3,7 +3,7 @@
 ## Modelo
 
   Es la construccion conceptual mas simplificada de una realizadad más compleja
-    Para moer comprender mejor la realizada.
+    Para poder comprender mejor la realizada.
   
   Por ejemplo un mapa, que nos ayuda a enteden nuestro entorno.
 
