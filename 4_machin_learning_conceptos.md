@@ -55,7 +55,7 @@ Lo que estamos buscando son comportamineto o patrones similares para generar con
 
 <table>
   <tr><td>Redes Neuronales</td></tr>
-  <tr><td>Knn (vecionos)</td></tr>
+  <tr><td>Knn (vecinos)</td></tr>
   <tr><td>Clusterizacion</td></tr>
 </table>
 
@@ -64,10 +64,10 @@ Lo que estamos buscando son comportamineto o patrones similares para generar con
 ## Pasos de estudio de una problema con Machin Learning
 
 1) Definicion del problema
-2) Objetivos del Machn Learning
+2) Objetivos del Machin Learning
 3) Recoleccion de los datos
 4) Limpieza de datos
-5) Entrenamineto y validacion del/los modelos
+5) Entrenamineto y validacion de los modelos
 6) Testeo
 7) Publicacion
 
@@ -94,8 +94,10 @@ Datos e validacion : Son los datos con los que valido el modelo
 
 # Regresion lineal
 
+  Utilizaremos este modelo para predicir un dato que puede optar por muchos valores.
+  
   Modelo utilizado para explicar la relacion entre una variable DEPENDIENTE Y y una serie de variables INDEPENTES X
-
+  
 ```python
 
 lm(data, varaiblea_a_predecir~varaible predictora)
@@ -108,8 +110,6 @@ lm(data=data_frame, variable_a_predecir~Variable_predictora_1, Variable_predicto
 
 
 # Regresion logistica
-
-Usada para clasificar.
 
 Usada para predecir el resultado de una varaible categorica, es decir una varaible que tiene un numero limitado de valores posibles,
 en funcion de las varaibles independientes o predictoras
@@ -161,7 +161,7 @@ def derivada_theta(X,y):
 
 # Desviacion Estandard
 
-  Es la media de dispersion mas comun, que nos indica como de dispersos estan los datos copn respecto a la media
+  Es la media de dispersion mas comun, que nos indica como de dispersos estan los datos con respecto a la media
   
   ```
       X     y     \
