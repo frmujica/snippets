@@ -2,9 +2,9 @@
 
 ## Aprendizaje supervisado
 
-Proceso encargado de encontrar la relacion exitente entre unas variables de entrada y una variable de salida
-Es decir, decirle al algoritmo que respuesta deseamos frente a ciertos de datos d entrada, tras mostrarle muchos ejemplos.
-Hasta el punto que el algotimo puede dar un resultado correcto en funcion de unos datos de entrada sin haberlos visto anteriormente.
+Proceso encargado de encontrar la relacion exitente entre unas variables de entrada y una variable de salida.
+Es decir, decirle al algoritmo que respuesta deseamos frente a ciertos de datos de entrada, tras mostrarle muchos ejemplos.
+Hasta el punto de que el algotimo puede dar un resultado correcto en funcion de unos datos de entrada sin haberlos visto anteriormente.
 
 
 <table>
