@@ -229,18 +229,31 @@ plt.scatter(X,y);
 
 ### RandomForest (Regression)
 
+Este modelo se puede definir como un grupo de modelos "Decision Tree"
 
 
-Parametros
-<li>Max_depth        :: Number of Splits</li>
-<li>Min_samples_leaf :: Minimum number of observations per leaf</li>
+Los parametros basicos que necesita son:
+
+<li>Max_depth        :: Number of Splits, o profundidad</li>
+<li>Min_samples_leaf :: Minimum number of observations per leaf, o numero de muestras por profundidad</li>
 
 ```python
+Pra el ejemplo y buscar los mejores paramttros de nuestro modelo, vamos a usar las funciones de GridSearchCV
 
 # RandomizedSearchCV -> es como el GridSearchCV pero prueba n_iter=5 combinaciones de forma aleatoria
 
+# Importamos la libreria RandomizedSearchCV
 from sklearn.model_selection import RandomizedSearchCV
 
+# instanaciamos e inicializamos nuestro objeto RandomizedSearchCV
+# Pasamos como parametro:
+# DecisionTreeRegressor()            : El modelo a evluar
+# max_depth":np.arange(2,8)          : rando de profuncidades
+# min_samples_leaf":[10,30,40,60]    : rango d datos a tratar en cada nivel
+# cv=5                               : 
+# scoring="neg_mean_absolute_error"  : Metrica con la mque medir el errordurante el apredizaje
+# n_iter=5                           : numero de combinaciones a probar
+                   
 rs = RandomizedSearchCV(DecisionTreeRegressor(),
                    param_distributions={"max_depth":np.arange(2,8),
                                         "min_samples_leaf":[10,30,40,60]
