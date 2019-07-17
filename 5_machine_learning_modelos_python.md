@@ -1,13 +1,8 @@
-# Machine Learning Snippets
+# Machine Learning - Aprendizaje supermivsado 
 
 ```
- Machin Learning - Aprendizaje supermivsado 
- 
  Tecnica para deducir una funcion a partir de los elelentos entrenados
- 
- - El resultado puede ser un valor numerico concreto (REGRESION) (lm)
- - O puede devolver una etiqueta (CLASIFICACION) (glm)
- 
+  
  La finalidad es creara un a funcion capaz de predecir un valor desde ejemplo dadods.
   
  Requiere tener datos de entrenamientos etiquetados
@@ -21,47 +16,58 @@
  Regresion     :: si la salida es un numeros (regresion linea... . MAE, correlacion y bias) (unimos a correlacion)
  Clasificacion :: si la salica es una clase ( regresion ligistica, vecinos, lector de soportes y arboles de decision )
  
- Metricas      ::  Para evaluar lo bueno que es el modelo
+ Metricas      ::  sistemas para evaluar lo bueno que es el modelo
 ```
 
 ```python
 
-# Ejmplo de clasificacion
+# Ejmplo de clasificacion, modelo para REGRESION LOGISTICA
 
 Ej = glm(data= My_Dataframe,
          family = "binomial",
          formula = var_a predecir~variable_predictora_1,variable_predictora_2...variable_predictora_N,
          wheight = var1, var2...)
-         
 
 ```
 
 
-
+## =============
 ## GridSearchCV
+## =============
+
+Antes de comenza con los modelos, vamos a ver las funcines de <b>GridSearchCV</b>, al que podemos darle un modelo, y un rango de parametros para dicho modelo y se encarga de devolvernos la mejor combinacion de parametros para nuestro modelo, en funion del los rangos facilitados.
+
+En resumen, las funciones <b>GridSearchCV</b>, la utilizaremos para calcular automaticamente los mejores parametros de un modelo dado.
 
 ```python
 
-# EJEMPLO de GridSearchCV para PARA KA-VECINOS
+# EJEMPLO de GridSearchCV para un modelo "KNeighbor"
 
+# Instacimoas las funciones de GridSearchCV
 from sklearn.model_selection import GridSearchCV
 
+# Instanciamos el modelo KNeighbor, en este caso para realizza runa regresión
 from sklearn.neighbors import KNeighborsRegressor
 
+# Configuramos nuestro GridSearchCV, indicandole que modelo es el que queremos evaluar
+# y el rango de parametros que queremos que evalue paa que nos de la mejor convinacion d eparametros.
+
+# En este caso, indicamos que el rango de vecinos mas cerfcanos a buscar sea entre 3 y 50 vecinos o datos mas cercanos.
 reg_test = GridSearchCV(KNeighborsRegressor(),
                         param_grid={"n_neighbors":np.arange(3,50)}
                         )
 
-# Fit will test all of the combinations
+# Vamos a entrenar el modelo o lanzar nuestro GridSearchCV, para que encuentre nuestros mejores parametros 
+# para nuestro modelo KNeighborsRegressor, usando todas las combinaciones segun los parametros indicados.
 reg_test.fit(X,y)
 
-# me indica el numero de vecinos que menos errores
+# Vamos a extrear de nuestro entrenamioento los mejores parametros encontrados para nuestro modelo KNeighborsRegressor
 reg_test.best_params_ 
 
-# me devulve el mejor 
+# Vamos a obtener el mejor resultado obtenido
 reg_test.best_score_ 
 
-# Me devuelve el mejor valor
+# Me devuelve los mejores estimadores.
 reg.best_estimator_
 
 ```
