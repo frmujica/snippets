@@ -1,6 +1,6 @@
 # Descenso del gradiente
 
-Es un algoritmo de de optimización clave dentro del campo de la inteligencia artificial.
+Es un algoritmo de optimización clave dentro del campo de la inteligencia artificial.
 
 Llamamos <b>funcion de coste</b> a la funcion que nos diga cual es el error para cada uno de nuestros parametros
 
@@ -21,7 +21,8 @@ por lo que la pasaremos a valor negativo para ir al siguiente punto, hasta encon
 
 Aun nos falta indicar el <b>ratio de aprendidaje</b>, es decir cuanto avanzamos en cada paso, es la loingitud
 del salto entre un punto y el siguiente. Si es corto tardaremos mucho y realizaremos muchas derivadas, si lo hacemos muy grandes,
-puede que nos pasemos de largo, y tardemos yambien mucho en calcular este <b>ratio de aprendizaje</b>
+puede que nos pasemos de largo, y tardemos tambien mucho en calcular este <b>ratio de aprendizaje</b>
 
 <div align="center"><img src="imagenes/Descenso_del_gradiente.md_3.png" width="250px"/></div>
 
+Un problema que nos encontramos es ¿Como saber que realmente estamos en el punto mas bajo o error mas bajo? Este es una problema que podemos solventar tomando varios puentos aleatorios para calcular sobre cada uno de ellos el gradiente.
