@@ -1,9 +1,9 @@
 # Machine Learning - Aprendizaje supermivsado 
 
 ```
- Tecnica para deducir una funcion a partir de los elelentos entrenados
+ Tecnica para deducir una funcion a partir de los elementos entrenados.
   
- La finalidad es creara un a funcion capaz de predecir un valor desde ejemplo dadods.
+ La finalidad es crear un a funcion capaz de predecir un valor desde ejemplo dados.
   
  Requiere tener datos de entrenamientos etiquetados
 
@@ -21,7 +21,7 @@
 
 ```python
 
-# Ejmplo de clasificacion, modelo para REGRESION LOGISTICA
+# Ejmeplo de clasificacion, modelo para REGRESION LOGISTICA
 
 Ej = glm(data= My_Dataframe,
          family = "binomial",
