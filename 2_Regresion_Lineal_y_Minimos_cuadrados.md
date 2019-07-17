@@ -17,19 +17,19 @@ Debemos de conocer la formula de esta regresion
 <b>W1</b> :  Defina la inclinacion de la recta y por lo tanto la relacion entre la variable de entrada <b>X</b>
       y la vaiable de salida <b>y</b>
 
-Esto sería la formula para una regresion sdimple con una sola variable de entrada 
+Esto sería la formula para una regresion simple con una sola variable de entrada 
 
 Podemos tener varias variables de entrada para determinar el valor de salida.
-De este modlo lo que buscamos ya no es encontrar la linea recta que se ajuntes a los datos
+De este modelo lo que buscamos ya no es encontrar la linea recta que se ajuntes a los datos
 Lo que buscamos es el mejor plano que se ajuste a nuestros datos. 
 
 <div align="center"><img src="imagenes/Regresión_Lineal_2.png" width="250px"/></div>
 
-Su formula sría así
+Su formula sería así
 
     y = Wo + W1X1 + W2X2 + W3X3...
     
-La forma mas comoda de representar todos estas variables de entrada se de forma vectorial
+La forma mas comoda de representar todos estas variables de entrada es de forma vectorial
 Es decir, si tenemos algo así:
 
     y1 = Wo + W1X11 + W2X12 + W3X13
@@ -38,7 +38,7 @@ Es decir, si tenemos algo así:
     y4 = Wo + W1X41 + W2X42 + W3X43
     
 
-Podemos crear una matris conde cada columna representa una columna de nuestros datos de entrada
+Podemos crear una matriz donde cada columna representa una columna de nuestros datos de entrada
 
     
         <b>X11</b>   X12   X13
@@ -47,7 +47,7 @@ Podemos crear una matris conde cada columna representa una columna de nuestros d
         <b>X41</b>   X42   X43
     
 
-Y cada Fila de la matris representa cada una de las mediciones que podemos realizar con ella
+Y cada Fila de la matriz representa cada una de las mediciones que podemos realizar con ella
 
     
         <b>X11</b>   <b>X12</b>   <b>X13</b>
@@ -75,7 +75,7 @@ Con estos datos solo tenemos que usar una simple ecuación vectorias
  
  # Errores: Cuadrados ordinarios (metodo 1)
  
-  ¿Como sabemo que tenemos obtenemos la mejor recta o el mejor plano?
+  ¿Como sabemo que hemos obtenido la mejor recta o el mejor plano?
  
   Para saber cual es la mejor recta, tenemos que tener en cuenta el error.
   
@@ -110,7 +110,7 @@ Con estos datos solo tenemos que usar una simple ecuación vectorias
   Otro metodo para calcular nuestro error y ajustar el modelo y que funciona 
   o se ajusta mejor que el calculo del cuadratico medio..
   
-  En ellos esta basado las redes neuronales.
+  En ellos esta basado las redes neuronales, que se verán en otro snippets
   
   
  
