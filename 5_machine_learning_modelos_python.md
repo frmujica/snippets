@@ -46,11 +46,11 @@ En resumen, las funciones <b>GridSearchCV</b>, la utilizaremos para calcular aut
 # Instacimoas las funciones de GridSearchCV
 from sklearn.model_selection import GridSearchCV
 
-# Instanciamos el modelo KNeighbor, en este caso para realizza runa regresión
+# Instanciamos el modelo KNeighbor, en este caso para realizar runa regresión
 from sklearn.neighbors import KNeighborsRegressor
 
 # Configuramos nuestro GridSearchCV, indicandole que modelo es el que queremos evaluar
-# y el rango de parametros que queremos que evalue paa que nos de la mejor convinacion d eparametros.
+# y el rango de parametros que queremos que evalue para que nos de la mejor combinacion de parametros.
 
 # En este caso, indicamos que el rango de vecinos mas cerfcanos a buscar sea entre 3 y 50 vecinos o datos mas cercanos.
 reg_test = GridSearchCV(KNeighborsRegressor(),
@@ -61,7 +61,7 @@ reg_test = GridSearchCV(KNeighborsRegressor(),
 # para nuestro modelo KNeighborsRegressor, usando todas las combinaciones segun los parametros indicados.
 reg_test.fit(X,y)
 
-# Vamos a extrear de nuestro entrenamioento los mejores parametros encontrados para nuestro modelo KNeighborsRegressor
+# Vamos a extraer de nuestro entrenamiento los mejores parametros encontrados para nuestro modelo KNeighborsRegressor
 reg_test.best_params_ 
 
 # Vamos a obtener el mejor resultado obtenido
@@ -83,24 +83,28 @@ reg.best_estimator_
 
 ```python
 
-# Load the library
+# Cargamos la libreria para realizar un regrersion logistica
 from sklearn.linear_model import LinearRegression
 
-# Create an instance of the model
+# Create an instance of the modelo
 reg = LinearRegression()
 
-# Fit the regressor
+# Entrenamos el modelo, pasando como parametro, una matriz de nuestras variables de entrenamiento
+# y un vector con nuestra variable a predecir.
 reg.fit(X,y)
 
-# Do predictions
+# Podemos realizar una prediccion, pasando como parametro una matriz de variables
+# similares a nuestra matriz X
 reg.predict([[2540],[3500],[4000]])
 ```
 
-### knn nearest neighbor (Regression)
+### KNeighborsRegressor (Regression)
 
 Este modelo lo podemos usar tanto pra regresion como para clasificacion
 
-Debemos indicar los puntos de corte o de decision en el caso de usarar para clasificacion
+En este ejeplo lo usaremos lara realizar una regresión.
+
+(Debemos indicar los puntos de corte o de decision en el caso de usarar para clasificacion)
 
 Busca distancias entre elemnos, y debemos indicar hasta cuantos vecinos puede buscar.
 
@@ -110,18 +114,20 @@ Se basa en los angulos o cosenos de los datos para buscar los vecinos mas cercan
 
 ```python
 
-# Load the library
+# Cargamos la libreia KNeighborsRegressor desde sklearn
 from sklearn.neighbors import KNeighborsRegressor
 
-# Create an instance
+# Instanciamos la clase y la inicializamos indicando cuantos vecinos debe de buscar
+# n_neighbors=2   : numero de vecinos a buscar durante el entrenamiento del modelo.
 regk = KNeighborsRegressor(n_neighbors=2)
 
-# Fit the data
+# Entrenamos el modelo, para ello, pasamos como parametro nuestra matri de variables predictoras
+# y un vector y con las variables a predecir.
 regk.fit(X,y)
 
 ```
 
-```R
+``` Version con lenguaje R
 
 # K : Cuantos vecinos ebemos de buscar,
 
@@ -137,51 +143,81 @@ Knn(DataFrame_Training,
 
 ### Decision Tree - Arboles de decision (Regression)
 
-Parametros
-<li>Max_depth        :: Number of Splits</li>
-<li>Min_samples_leaf :: Minimum number of observations per leaf</li>
+Este modelo necesita como minimo los parametros de:
+
+<li>Max_depth        :: Number of Splits o numero de saltos o profundidad</li>
+<li>Min_samples_leaf :: Minimum number of observations per leaf o numero inimo de observaciones por salto</li>
 
 ```python
 
 # Opcion 1
 
-# Load the library
+# Importmos la libreria
 from sklearn.tree import DecisionTreeRegressor
 
-# Create an instance
+# Instanciamos el objeto e inicializamos el nuero de saltos o profuncidad de nuestro arbon de decisioon
 regd = DecisionTreeRegressor(max_depth=3)
 
-# Fit the data
+# Entrenamos nuestro modelo, pasando como paramtro una matriz de varialbles predictoras 
+# y un vecto y con los datos a predecir.
 regd.fit(X,y)
 
 
-# Visualizacion de una arbol de decision desde un GridSearch
+# Vamos a repetir el ejemplo utilizando las funciones de GridSearch 
 
+# Instacimoas las funciones de GridSearchCV
+from sklearn.model_selection import GridSearchCV
+
+# Creamos un objeto  GridSearchCV pasando como parametros:
+# El modelo del que queremos conocer los mejores paramtros
+# Y en este caso
+# max_depth : con el rango de posible profundidades que puede tener nuestro arbol.
+# min_samples_leaf : y el rango minimo de muestras por prodfundidad que puede tener nuestro arbol de decision
 reg = GridSearchCV(DecisionTreeRegressor(),
                   param_grid={"max_depth":np.arange(2,8),
                               "min_samples_leaf":[10,30,50,100]},
                   cv=5,
                   scoring=make_scorer(corr_test))
                   
+# entrenamos nuestra funcion GridSearchCV, pasando como parametro un matriz con nuestras variables predictoras
+# y un vector con nuestras variables a predecir.
 reg.fit(X,y)
 
+# La libreria export_graphviz, la usaremos para visualizar nuestro arbol de decision
+# Método que permite exportar los resultados de un árbol de decisión al formato DOT de Graphviz.
+# importaremos la libreria desde sklearn
 from sklearn.tree import export_graphviz
 
+# Importamos libreria que recibe un objeto export_graphviz y puede intarlo. 
 import pydotplus
+
+# importamos la librria para tratar Strings
 from string import String
 
+# importamos lobrria para tratar ficheros
 import io
+
+# Instanaimos un objeto que nos permite tratar ficheros
 dot_data = io.StringIO()
 
+# Exportamos nuestro arbol de decision con la funcion export_graphviz
+# pasando como paramtros
+# El mejor modelo obtenido desde nuestro GridSerachCV
+# El objeto fichero
+# ...
 export_graphviz(reg.best_estimator_, 
                 out_file=dot_data,
                 filled=True, 
                 rounded=True,
                 special_characters=True)
 
+# Guardamos el objeto
 graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
 
+# Importamos una libreria que nos permite mostrar imagenes
 from IPython.display import Image
+
+# Llamamos la funcion Image de este libreria pasando como parametro el grafico de nuestro madelo transformado en imagen (graph.create_png())
 Image(graph.create_png())
 
 # Pintamos el grafico
@@ -192,6 +228,8 @@ plt.scatter(X,y);
 
 
 ### RandomForest (Regression)
+
+
 
 Parametros
 <li>Max_depth        :: Number of Splits</li>
