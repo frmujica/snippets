@@ -63,6 +63,8 @@ regi = GridSearchCV(DecisionTreeRegressor(),
 
 ## ACCURACY
 
+Es el porcentaje total de elementos clasificados correctamente.
+
 ```PYTHON
 
 # importamos la libera de la metrica para sacar el accuracy
@@ -74,7 +76,7 @@ accuracy_score(y_test, clf.predict(X_test))
 
 ## MAE
 
-Metria MAE (suma de los valores absolutos) y nos da el error para todas las casas con esta metrica
+Metria MAE (suma de los valores absolutos) y nos da el error para todas las casos con esta metrica
 
 ```PYTHON
 
@@ -90,7 +92,7 @@ plt.hist(y_test-pred, bins=50);
 
 
 
-# Ejemplo de metrica aplicada a K-Vecinos
+# Ejemplo de metrica aplicada a KNN o K-Vecinos
 
 # cargamos la librería
 from sklearn.neighbors import KNeighborsRegressor
@@ -109,7 +111,7 @@ plt.plot(maes)
 
 ## MAPE
 
-Suma de todos los valores absolutos y divide entre el totla de valores.
+Suma de todos los valores absolutos y divide entre el total de valores.
 
 ```PYTHON
 
@@ -180,7 +182,7 @@ regi.best_params_
 
 ## Bias
 
-Es la media de los errores, lo que nos permite ver si los errores están deviados a una lado o a otro
+Es la media de los errores, lo que nos permite ver si los errores están desviados a una lado o a otro
 
 ```PYTHON
 
@@ -194,6 +196,16 @@ np.sqrt(mean_squared_error(y_test, regK.predict(X_test)))
 
 
 ## Matriz de confusion
+
+Tabla que describe el rendimiento de un modelo supervisado de Machine Learning en los datos de prueba, donde se desconocen los verdaderos valores. Se llama “matriz de confusión” porque hace que sea fácil detectar dónde el sistema está confundiendo dos clases.
+
+True Positives (TP): cuando la clase real del punto de datos era 1 (Verdadero) y la predicha es también 1 (Verdadero)
+
+Verdaderos Negativos (TN): cuando la clase real del punto de datos fue 0 (Falso) y el pronosticado también es 0 (Falso).
+
+False Positives (FP): cuando la clase real del punto de datos era 0 (False) y el pronosticado es 1 (True).
+
+False Negatives (FN): Cuando la clase real del punto de datos era 1 (Verdadero) y el valor predicho es 0 (Falso).
 
 ```PYTHON
 
@@ -246,9 +258,14 @@ auc(fp,tp)
 ```
 
 
-## Precision & Recall
+## Precision VS Recall
 
-Vemos los hay debajo de la curva de la grafica
+ReCall: Es el número de elementos identificados correctamente como positivos del total de positivos verdaderos.
+(Vemos los hay debajo de la curva de la grafica)
+
+Precision: Es el número de elementos identificados correctamente como positivo de un total de elementos identificados como positivos.
+
+Está claro que recall nos da información sobre el rendimiento de un clasificador con respecto a falsos negativos (cuántos fallaron), mientras que la precisión nos proporciona información sobre su rendimiento con respecto a los falsos positivos (cuántos capturados).
 
 ```PYTHON
 
@@ -263,5 +280,27 @@ classification_report(y_test,clf.predict(X_test))
 # Cross Validation
 cross_val_score(clf,X,y,scoring="precision")
 cross_val_score(clf,X,y,scoring="recall")
+
+# Ejmplo de modelo SVC, entrenamiento y prediccion
+wclf = SVC(kernel='linear', C= 1, class_weight={1: 10})
+wclf.fit(X, y)
+weighted_prediction = wclf.predict(X_test)
+
+# Extraemos las metrris de ReCall y Precision
+print 'Recall:', recall_score(y_test, weighted_prediction, average='weighted')
+print 'Precision:', precision_score(y_test, weighted_prediction, average='weighted')
+
+# Crear un informe de texto que muestre las principales métricas de clasificación
+print '\n clasification report:\n', classification_report(y_test, weighted_prediction)
+
+# Matriz de confusion
+print '\n confussion matrix:\n',confusion_matrix(y_test, weighted_prediction)
+
+# Accuracy
+print 'Accuracy:', accuracy_score(y_test, weighted_prediction)
+
+# El puntaje de F1 se puede interpretar como un promedio ponderado de la precisión y el recuerdo, 
+# donde un puntaje de F1 alcanza su mejor valor en 1 y el peor puntaje en 0
+print 'F1 score:', f1_score(y_test, weighted_prediction,average='weighted')
 
 ```
