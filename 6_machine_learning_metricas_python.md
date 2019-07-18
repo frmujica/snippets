@@ -2,6 +2,9 @@
 
 ## Validacion cruzada
 
+Da como resultado medidas estadísticas como la media y la desviación estandar. 
+Esta validación se puede confirmar con gráficos de tipo box charts, scattered matrix e histogramas
+
 Parametros
 <li>clf                 :: Es el modelo</li>
 <li>X                   :: Destino para el eje X</li>
