@@ -560,26 +560,52 @@ randomFirest(variable_a_predecir~variable_predictora_1+variable_predictora_2...v
 
 Separa los puntos de una clase de otra clase de forma linea.
 
+El objetivo de un SVC lineal es ajustarse a los datos que proporcione, devolviendo un hiperplano de "mejor ajuste" que divide o clasifica sus datos
+
 Parametros
 <li>kernel="linear" :: Para indicar que tipo de separacion valor a utilizar</li>
-<li>C=10            :: Para indicar cuantos puntos de podemos dejar que se crecuen al otro lado de la linea</li>
+<li>C=10            :: Para indicar cuantos puntos podemos dejar que se crecuen al otro lado de la linea</li>
 
 
 ```python
-# Import Library
+# Importamos la libreria de nuestro modelo
 from sklearn.svm import SVC
 
-# Create instance
+# Instiamos nuestro modelo
+# Parametros
 # kerlen = añade dimensiones
+# kernel="linear"    : Tipo de separacion o division d elos datos queremos hacer
+# C=10               : Indicmaos cuantos puntos muden cruzarse al lado de linea que no debía o como de permisivo es nuestro modelo
 clf = SVC(kernel="linear", C=10)
 
-# Opcion 1: Procesamos con Cross Validation
+# Metria de nuestro modelo 
+# Parametros
+# clf      : numestro modelo
+# X        : Matriz con nuestras variable predicoras
+# y        : Vector con nuestra variable a predecir
 cross_val_score(clf,X,y)
 
-# Resultado sacando la media
+# Entranmiento del modelo pasando como parametro una matriz con las varialbes predicroras y un vector con nuestra varaible a predecir
+clf.fit(X,y)
+
+# Extracción d ela media de nuestrsa metrica
 cross_val_score(clf,X,y).mean()
 
-# Opcion 2
+
+# Podemos tambien buscar, dado un rango de parametros, la mejor parametrizacion de nuestro modelo SVC
+
+# Instanciamos las funciones de GridSearchCV
+from sklearn.model_selection import GridSearchCV
+
+# Instaciamos nuestro objeto GridSearchCV y lo parametrizamos
+# Parametros:
+# SVC(kernel="poly", degree=10)    :  modelo a evaluar indicando que tipo de clasifiacionen quiero
+#     kernel="poly" : Mientras "lineal" busca un hiperplano linal, poly busca hiperparametros no lineales
+#     degree10: es un parámetro usado cuando el núcleo está configurado como 'poli'. 
+#               Es básicamente el grado del polinomio utilizado para encontrar el hiperplano para dividir
+#               los datos.
+# cv=5                : numero de validaciones cruzadas que va a realizar
+# scoring="accuracy"  : Metria con el el evaluar el modelo para extraer la mejor parametrizacion
 clf = GridSearchCV(SVC(kernel="poly", degree=10), 
                   param_grid={"C":[1,10,100,1000],
                               "degree":[2,3,4]
@@ -588,7 +614,7 @@ clf = GridSearchCV(SVC(kernel="poly", degree=10),
                    scoring="accuracy"
                   )
                   
-# Entrenamos los datos
+# Entrenamos los datos pasando como parametros una matriz con las varialbes predictoras y un vector con la variable a predecir
 clf.fit(X,y) # entrenamos los datos
 
 # Devulve la generacion del modolo con los parametros que mejor resultado han dado
