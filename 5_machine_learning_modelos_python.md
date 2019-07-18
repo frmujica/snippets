@@ -43,7 +43,7 @@ En resumen, las funciones <b>GridSearchCV</b>, la utilizaremos para calcular aut
 
 # EJEMPLO de GridSearchCV para un modelo "KNeighbor"
 
-# Instacimoas las funciones de GridSearchCV
+# Instanciamos las funciones de GridSearchCV
 from sklearn.model_selection import GridSearchCV
 
 # Instanciamos el modelo KNeighbor, en este caso para realizar runa regresión
@@ -165,7 +165,7 @@ regd.fit(X,y)
 
 # Vamos a repetir el ejemplo utilizando las funciones de GridSearch 
 
-# Instacimoas las funciones de GridSearchCV
+# Instancimos las funciones de GridSearchCV
 from sklearn.model_selection import GridSearchCV
 
 # Creamos un objeto  GridSearchCV pasando como parametros:
@@ -274,40 +274,128 @@ rs = RandomizedSearchCV(DecisionTreeRegressor(),
 
 ```python
 
-# Load the library
+# Importamos la libreria
 from sklearn.linear_model import LogisticRegression
 
-# Create an instance of the classifier
+# Creamos una instancia del objeto
 clf=LogisticRegression()
 
-# Fit the data
+# Entrenamos el modelo, pasando como parametros una matriz con las variables predictoras y un vector con la variable a predecir.
 clf.fit(X,y)
 
 ```
 
 
-### k nearest neighbor (Classification)
+### k-Nearest Neighbors o K-vecinos (KNN) (Classification)
+
+Anque este módelo se puede utilizar tanto para regresión como clasificación, se suele utilizar mas para clasificación.
+
+Para realizar una predicción normalmnete son fijamos en tres parametros fundamentales:
+
+- Facilidad para interpresar la salida
+- Tiempo de calculo
+- Poder predictivo
+
+<table>
+<tr>
+<td></td>
+<td>Regresion Logistica</td>
+<td>CART</td>
+<td>Random Forest</td>
+<td>KNN</td>
+<tr>
+<tr>
+<td>Facilidad para interpresar la salida</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Tiempo de calculo</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Poder predictivo</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+</tr>
+</table>
+                                          
+
+Este módelo se suele usar por su facil interpretación y bajo tiempo de calculo.
 
 Parametros
-<li>n_neighbors :: Numero de vecinos a bus r mas cercanos</li>
+<li>n_neighbors :: Numero de vecinos a buscar mas cercanos</li>
+
+Este parmetro influlle en las metricas de rror. Tener en cuenta.
 
 ```python
 
-# Load the library
+# Importamos la libreria para poder usar el modelo NKK
 from sklearn.neighbors import KNeighborsClassifier
 
-# Create an instance
+# Instanciamos el objeto de nuestro modelo, indicando como parametro el numeor de vecinos a localizar
 regk = KNeighborsClassifier(n_neighbors=2)
 
-# Fit the data
+# Entrenamos nuestro modelo, pasando como parametro una matris con a lista de variables predictoras y un vector con la variable a predecir.
 regk.fit(X,y)
 ```
 
 ### Navie Bayes
 
-Modelo de clasificacion de la librería "e1071"
+El algoritmo Naive Bayes es un método intuitivo que utiliza las probabilidades de cada atributo que pertenece a cada clase para hacer una predicción. Es el enfoque de aprendizaje supervisado que se le ocurriría si quisiera modelar un problema de modelado predictivo de forma probabilística.
+
+Simplifican el cálculo de probabilidades al suponer que la probabilidad de que cada atributo pertenezca a un valor de clase dado es independiente de todos los demás atributo
+
+contrar del módelo:
+
+* Requerir a eliminar características correlacionadas Porque son votados dos veces en el modelo y puede llevar a inflando importancia.
+
+* Si una variable categórica tiene una categoría en el conjunto de datos de prueba que no se observó en el conjunto de datos de entrenamiento , entonces el modelo asignará una probabilidad cero . No podrá hacer una predicción.
+
+* Este tipo de modelos no permite que las varaibles predictoras interactuen entre si. Por lo que se suele usar un modelo de "arboles"
+
+
+```PYTHON
+
+# Importamos la libreria para poder usar el módelo
+From sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
+
+# Instanciamos el objeto de nuestro modelo
+gnb = GaussianNB ()
+
+# Creamos un vector con las variables predictoras
+used_features = [
+    " Clase " ,
+    " Sex_cleaned " ,
+    " Edad " ,
+    " SibSp " ,
+    " Parch " ,
+    " Tarifa " ,
+    " Embarked_cleaned "
+]
+
+# Entrenamos nuestro modelo pasandole como parametro una matriz con nuestras varaibles predictoras y un vector con nuestra variable a predecir
+gnb.fit(
+    X_train [used_features] .values,
+    X_train [ "Sobrevivio" ]
+)
+
+# Probamos a realizar una predicción
+y_pred = gnb.predict (X_test [used_features])
+
+
+```
 
 ```R
+
+# Modelo de clasificacion de la librería "e1071"
 
 # Importacion de la libreria
 library (e1071)
@@ -326,23 +414,25 @@ hist( predict( modelo, newdata=New_Data_Frame, type="responsive", brear=10)
 
 ```
 
-En este caso, el problema es que este tipo de modelos no permite que las verriables predictoras interactuen entre si.
-Por lo que se suele usar un modelo de "arboles"
-
 
 ### Decision Tree (Classification)
 
-Este modelo permite la interactuacion entrre las varaibles predictoras.
+Pros: 
 
-Es fácil de usar
+* Este modelo permite la interactuacion entre las varaibles predictoras.
 
-PEro es demasiado flexible
+* Es fácil de usar
 
-Metodo muy fiable 
+* Metodo muy fiable 
+
+Contras:
+
+* Pero es demasiado flexible
+
 
 Podemos indicar el punto de corte o decisorio, y que se suele indicar con con puntos que mas separen los datos.
 
-Entran conceptos como:
+Conceptos:
 
 Nodo        :: Punto de decision
 Hoja        :: Lo que cuelga del nogo
@@ -355,13 +445,13 @@ Parametros:
 
 ```python
 
-# Import Library
+# Importamos la libreria para poder usar nuestro modelo
 from sklearn.tree import DecisionTreeClassifier
 
-# Create instance
+# Instanciamos el objeto de nuestro modelo. durante la instanacia podemos especificar algunos de los parametros
 clf = DecisionTreeClassifier(min_samples_leaf=20,max_depth=3)
 
-# Fit
+# Entrenamos nuestro modelo, pasando como parametros una matris con las variables predictoras y un vector con la variable a predecir.
 clf.fit(X,y)
 
 
