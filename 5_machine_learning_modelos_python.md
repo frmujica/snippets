@@ -455,11 +455,23 @@ clf = DecisionTreeClassifier(min_samples_leaf=20,max_depth=3)
 clf.fit(X,y)
 
 
+# Podemos utilizar las funciones de GridSearchCV para encotnrar de entre un rango de parametros, la mejor
+# parametrización d enuestro modelo. Vemos un ejemplo:
+
 # Ejemplo con GridSearchCV
 
+# Importamos la libraria para poder usar nuestro modelo
 from sklearn.tree import DecisionTreeClassifier
+
+# Importamos la libreria para usar las funciones de GridSearchCV
 from sklearn.model_selection import GridSearchCV
 
+# Instanciamos el objeto GridSearchCV y lo parametrizamos
+# DecisionTreeClassifier()                  : modelo a evaluar
+# "max_depth":np.arange(1,100,20)           : Rango de profuncidades de nuestro arbol de decisión
+# "min_samples_leaf":np.arange(20,100,20)   : rango de hojas
+# cv                                        : numero de validaciones cruzadas que va a realizar
+# scoring                                   : reglas de evaluacion del modelo o metrica con el que se mide nuestro modelo
 clft = GridSearchCV(DecisionTreeClassifier(),
                     param_grid={"max_depth":np.arange(1,100,20),
                                 "min_samples_leaf":np.arange(20,100,20)
@@ -468,13 +480,13 @@ clft = GridSearchCV(DecisionTreeClassifier(),
                     scoring="precision"
                   )
 
-# Cargamos el modelo
+# Entrenamos el modelo
 clft.fit(X,y)
 
-# Nos devulve la instruccion con cunmplimnetada con los parametros con mejor resultado
+# Nos devulve la instruccion con cumnplimentada con los parametros con mejor resultado
 clft.best_estimator_
 
-#Nos devulve los mejores parametros con los que ha obtenido el mejor resultado
+# Nos devulve los mejores parametros con los que ha obtenido el mejor resultado
 clft.best_params_
 
 # mejor resultado
@@ -506,7 +518,9 @@ plot(modelo, Y=Null, type=C("____", "_____"))
 
 Este modelo generar muchos arboles de decision independientes construidos a partir de datos ligeramente distintos
 
-Estemodelo no admite valores NAN
+Contra: 
+
+* Estemodelo no admite valores NAN
 
 Parametros
 <li>n_estimator :: numero de arboles</li>
@@ -520,12 +534,20 @@ Parametros
 from sklearn.ensemble import RandomForestClassifier
 
 # Creamos el modelo
+# Parametros:
+# max_depth=3            : Profundidad de nuestros arboles
+# min_samples_leaf=20    : Numero de testeos minimos
+# n_estimators=100       : Número de arboles
+# n_jobs=-1              : Numero d eprocesador a utilizar (-1 TODOS)
 clf = RandomForestClassifier(max_depth=3, min_samples_leaf=20, n_estimators=100, n_jobs=-1)
 
-# pasamos la metrica CrossValidaton
+# Si deseamos realizar una metrica para lo bueno que es nuestro modelo, podemos pusar usar la metrica CrossValidaton
+# Pasando como parametros, nuestro modelo
+# la patriz de train
+y el vector de train
 cross_val_score(clf, X,y).mean()
 
-# Entrenamiento
+# Entrenamiento pasando como parametro la matriz de varialbes predictoras y un vector con nuestra varaiable a predecir.
 clf.fit(X,y)
 ```
 
